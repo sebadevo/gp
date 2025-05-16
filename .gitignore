@@ -1,0 +1,9 @@
+# Python tmp files
+__pycache__
+
+# Virtual environments
+.venv
+
+# IDE
+.idea
+.vscode

@@ -1,0 +1,45 @@
+[project]
+name = "gp"
+version = "0.1.0"
+description = "A good practice repo for futur development"
+readme = "README.md"
+authors = [
+    { name = "Sébastien De Vos", email = "sebastien.devos@euranova.eu" }
+]
+requires-python = "~=3.11.0"
+
+dependencies = [
+    "numpy>=2.2.5",
+    "pandas>=2.2.3",
+]
+
+[dependency-groups]
+
+dev = [
+    "ipykernel>=6.29.5",
+    "pre-commit>=4.2.0",
+    "ruff>=0.11.10",
+    "ty>=0.0.1a3",
+]
+
+test = [
+    "pytest>=8.3.5",
+]
+
+tracing = [
+    "mlflow>=2.22.0",
+]
+
+visualisation = [
+    "matplotlib>=3.10.3",
+    "plotly>=6.1.0",
+    "seaborn>=0.13.2",
+]
+
+
+[project.scripts]
+gp = "gp:main"
+
+[build-system]
+requires = ["uv_build>=0.7.4,<0.8"]
+build-backend = "uv_build"
