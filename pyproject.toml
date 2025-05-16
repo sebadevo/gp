@@ -20,6 +20,9 @@ dev = [
     "pre-commit>=4.2.0",
     "ruff>=0.11.10",
     "ty>=0.0.1a3",
+    {include-group = "test"},
+    {include-group = "tracing"},
+    {include-group = "visualisation"},
 ]
 
 test = [
@@ -35,6 +38,45 @@ visualisation = [
     "plotly>=6.1.0",
     "seaborn>=0.13.2",
 ]
+
+[tool.uv]
+default-groups = [] # to not include dev by default
+
+
+[tool.ruff]
+line-length = 120
+exclude = ["**/*.ipynb"] # Exclude Notebooks from linting and formatting
+
+[tool.ruff.lint]
+select = [
+    "I",   # isort rules
+    "ANN", # enforce type annotations for arguments and return types
+    "AIR", # Airflow specific rules
+    "Fast",# FastAPI specific rules
+    "E",   # pycodestyle (error)
+    "F",   # pyflakes
+    "B",   # bugbear
+    "B9",
+    "C4",  # flake8-comprehensions
+    "SIM", # flake8-simplify
+    "UP",  # pyupgrade
+    "PIE", # flake8-pie
+    "PGH", # pygrep-hooks
+    "PYI", # flake8-pyi
+    "RUF",
+]
+
+[tool.ruff.lint.pycodestyle]
+convention = "google"
+
+[tool.ty.rules]
+unused-ignore-comment = "warn"
+possibly-unresolved-reference = "warn"
+possibly-unbound-attribute = "error"
+possibly-unbound-import = "error"
+
+[tool.ty.environment]
+python = "./.venv" # should be the default value I think (when full release comes out)
 
 
 [project.scripts]
