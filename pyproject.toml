@@ -19,7 +19,7 @@ dev = [
     "ipykernel>=6.29.5",
     "pre-commit>=4.2.0",
     "ruff>=0.11.10",
-    "ty>=0.0.1a3",
+    "ty>=0.0.1a4",
     {include-group = "test"},
     {include-group = "tracing"},
     {include-group = "visualisation"},
@@ -39,8 +39,8 @@ visualisation = [
     "seaborn>=0.13.2",
 ]
 
-[tool.uv]
-default-groups = [] # to not include dev by default
+# [tool.uv]
+# default-groups = [dev] # to not include dev by default
 
 
 [tool.ruff]
@@ -49,22 +49,99 @@ exclude = ["**/*.ipynb"] # Exclude Notebooks from linting and formatting
 
 [tool.ruff.lint]
 select = [
-    "I",    # isort rules
-    "ANN",  # enforce type annotations for arguments and return types
-    "AIR",  # Airflow specific rules
-    "FAST", # FastAPI specific rules
-    "E",    # pycodestyle (error)
-    "F",    # pyflakes
-    "B",    # bugbear
-    "B9",
-    "C4",   # flake8-comprehensions
-    "SIM",  # flake8-simplify
-    "UP",   # pyupgrade
-    "PIE",  # flake8-pie
-    "PGH",  # pygrep-hooks
-    "PYI",  # flake8-pyi
-    "RUF",
+    "I",        # isort rules
+    "ANN",      # Enforce type annotations for arguments and return types
+    "ERA",      # Detection of commented-out code
+    "AIR",      # Airflow specific rules
+    "FAST",     # FastAPI specific rules
+    "YTT",      # Flake8-2020 rules
+    "ASYNC",    # flake8-async rules
+    "S",        # flake8-bandit rules (security)
+    "COM819",   # flake8-commas (trailing comma prohibited)
+    "C4",       # flake8-comprehensions rules
+    "DTZ003",   # flake8-datetimez rule (specific deprecation)
+    "T10",      # flake8-debugger rules
+    "FA",       # flake8-future-annotations rules
+    "ISC",      # flake8-implicit-str-concat rules
+    "ICN",      # flake8-import-conventions rules
+    "LOG",      # flake8-logging rules
+    "G010",     # flake8-logging-format rule (specific)
+    "PIE",      # flake8-pie rules
+    "PYI",      # flake8-pyi rules
+    "Q",        # flake8-quotes
+    "RSE",      # flake8-raise rules
+    "RET",      # flake8-return rules
+    "TID",      # flake8-tidy-imports rules
+    "BLE",      # flake8-blind-except (untyped exception handling)
+    "PT",       # flake8-pytest-style (pytest-specific improvements)
+    "SIM",      # flake8-simplify (simplify complex expressions)
+    "ARG",      # flake8-unused-arguments (detect unused arguments in functions)
+    "FLY",      # flynt rules
+    "NPY",      # NumPy specific rules
+    "E",        # pycodestyle errors
+    "W",        # pycodestyle warnings
+    "D2",       # pydocstyle rules (subset)
+    "D3",       # pydocstyle rules (subset)
+    "D403",     # pydocstyle rules (specific)
+    "D405",     # pydocstyle rules (specific)
+    "D411",     # pydocstyle rules (specific)
+    "D412",     # pydocstyle rules (specific)
+    "D416",     # pydocstyle rules (specific)
+    "F",        # Pyflakes rules
+    "PLC",      # Pylint Convention rules
+    "PLE",      # Pylint Error rules
+    "N",        # pep8-naming (enforce naming conventions like lowercase, camelCase, etc.)
+    "UP",       # pyupgrade (modernize code, handle deprecations, proper string usage, etc.)
+    "PERF",     # Perflint (performance-related improvements)
+    "PLW",      # Pylint warnings suggestions
+    "PLR",      # Pylint refactor suggestions
+    "FURB105",  # refurb rules (specific subset of stable rules)
+    "FURB129",
+    "FURB136",
+    "FURB161",
+    "FURB163",
+    "FURB167",
+    "FURB168",
+    "FURB169",
+    "FURB177",
+    "FURB181",
+    "FURB187",
+    "FURB188",
+    "RUF",      # Ruff-specific rules
+    "TRY",      # tryceratops rules (exception handling)
 ]
+
+# for the moment these are set as ignore, later may be added
+ignore = [
+    "S101",   # Use of assert detected
+    "S104",   # Possible binding to all interfaces (e.g., host="0.0.0.0")
+    "S311",   # Standard pseudo-random generators are not suitable for cryptographic purposes
+    "S301",   # Use of pickle
+    "S603",   # `subprocess` call: check for execution of untrusted input
+    "ISC002", # Implicit string concatenation on same line
+    "LOG015", # Logging on root logger
+    "Q004",   # Unnecessary escape on inner quote character
+    "RET504", # Unnecessary assignment before return
+    "RET505", # Unnecessary branch after return
+    "RET507", # Unnecessary branch after continue
+    "E501",   # Line too long (handled by formatter or explicitly ignored)
+    "W605",   # Invalid escape sequence (sometimes needed for LLM prompts)
+    "D205",   # 1 blank line required between summary line and description (docstring)
+    "D203",   # No blank lines between class definition and its docstring
+    "D212",   # Multi-line docstring summary should start at the first line (conflicts with D213)
+    "TRY003", # Avoid long messages outside the exception class
+    "TRY002", # Create custom exception types instead of raising generic Exception
+    "RUF001", # String processing optimization (e.g., ambiguous unicode)
+    "RUF010", # Explicit conversion flag required for `datetime.utcnow()` etc. (use DTZ instead)
+    "RUF005", # Use `list.extend` instead of `+=` for list concatenation (sometimes less readable)
+    "RUF015", # Prefer `startswith`/`endswith` over slicing for checking prefixes/suffixes
+    "RUF100", # Unused `# noqa` comment
+    "RUF101", # Invalid `# noqa` directive
+    # "RUF102", # Invalid `# noqa` code. This rule is unstable and in preview.
+]
+
+fixable = ["ALL"]
+unfixable = []
 
 [tool.ruff.lint.pydocstyle]
 convention = "google"
