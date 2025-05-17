@@ -50,6 +50,8 @@ exclude = ["**/*.ipynb"] # Exclude Notebooks from linting and formatting
 [tool.ruff.lint]
 select = [
     "I",        # isort rules
+    "ANN",      # Enforce type annotations for arguments and return types
+    "ERA",      # Detection of commented-out code
     "AIR",      # Airflow specific rules
     "FAST",     # FastAPI specific rules
     "YTT",      # Flake8-2020 rules
@@ -70,6 +72,10 @@ select = [
     "RSE",      # flake8-raise rules
     "RET",      # flake8-return rules
     "TID",      # flake8-tidy-imports rules
+    "BLE",      # flake8-blind-except (untyped exception handling)
+    "PT",       # flake8-pytest-style (pytest-specific improvements)
+    "SIM",      # flake8-simplify (simplify complex expressions)
+    "ARG",      # flake8-unused-arguments (detect unused arguments in functions)
     "FLY",      # flynt rules
     "NPY",      # NumPy specific rules
     "E",        # pycodestyle errors
@@ -84,6 +90,11 @@ select = [
     "F",        # Pyflakes rules
     "PLC",      # Pylint Convention rules
     "PLE",      # Pylint Error rules
+    "N",        # pep8-naming (enforce naming conventions like lowercase, camelCase, etc.)
+    "UP",       # pyupgrade (modernize code, handle deprecations, proper string usage, etc.)
+    "PERF",     # Perflint (performance-related improvements)
+    "PLW",      # Pylint warnings suggestions
+    "PLR",      # Pylint refactor suggestions
     "FURB105",  # refurb rules (specific subset of stable rules)
     "FURB129",
     "FURB136",
@@ -100,19 +111,7 @@ select = [
     "TRY",      # tryceratops rules (exception handling)
 ]
 
-# The following rules are currently not active due to a high number of offenders in the codebase.
-# However, they could be valuable to activate in the future to improve code quality:
-# - "ANN": Enforce type annotations for arguments and return types
-# - "ERA": Detection of commented-out code
-# - "BLE": flake8-blind-except (untyped exception handling)
-# - "PT": flake8-pytest-style (pytest-specific improvements)
-# - "SIM": flake8-simplify (simplify complex expressions)
-# - "ARG": flake8-unused-arguments (detect unused arguments in functions)
-# - "N": pep8-naming (enforce naming conventions like lowercase, camelCase, etc.)
-# - "UP": pyupgrade (modernize code, handle deprecations, proper string usage, etc.)
-# - "PERF": Perflint (performance-related improvements)
-# - "PLW", "PLR": Pylint warnings and refactor suggestions
-
+# for the moment these are set as ignore, later may be added
 ignore = [
     "S101",   # Use of assert detected
     "S104",   # Possible binding to all interfaces (e.g., host="0.0.0.0")
