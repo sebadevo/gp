@@ -39,8 +39,8 @@ visualisation = [
     "seaborn>=0.13.2",
 ]
 
-[tool.uv]
-default-groups = [] # to not include dev by default
+# [tool.uv]
+# default-groups = [dev] # to not include dev by default
 
 
 [tool.ruff]
