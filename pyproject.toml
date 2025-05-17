@@ -49,24 +49,24 @@ exclude = ["**/*.ipynb"] # Exclude Notebooks from linting and formatting
 
 [tool.ruff.lint]
 select = [
-    "I",   # isort rules
-    "ANN", # enforce type annotations for arguments and return types
-    "AIR", # Airflow specific rules
-    "Fast",# FastAPI specific rules
-    "E",   # pycodestyle (error)
-    "F",   # pyflakes
-    "B",   # bugbear
+    "I",    # isort rules
+    "ANN",  # enforce type annotations for arguments and return types
+    "AIR",  # Airflow specific rules
+    "FAST", # FastAPI specific rules
+    "E",    # pycodestyle (error)
+    "F",    # pyflakes
+    "B",    # bugbear
     "B9",
-    "C4",  # flake8-comprehensions
-    "SIM", # flake8-simplify
-    "UP",  # pyupgrade
-    "PIE", # flake8-pie
-    "PGH", # pygrep-hooks
-    "PYI", # flake8-pyi
+    "C4",   # flake8-comprehensions
+    "SIM",  # flake8-simplify
+    "UP",   # pyupgrade
+    "PIE",  # flake8-pie
+    "PGH",  # pygrep-hooks
+    "PYI",  # flake8-pyi
     "RUF",
 ]
 
-[tool.ruff.lint.pycodestyle]
+[tool.ruff.lint.pydocstyle]
 convention = "google"
 
 [tool.ty.rules]
@@ -77,6 +77,9 @@ possibly-unbound-import = "error"
 
 [tool.ty.environment]
 python = "./.venv" # should be the default value I think (when full release comes out)
+
+[tool.pre-commit]
+show_elapsed_time = true
 
 
 [project.scripts]
