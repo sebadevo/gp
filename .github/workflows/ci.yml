@@ -66,4 +66,4 @@ jobs:
       #   run: uv sync --locked --all-extras --all-groups
 
       - name: Run tests
-        run: uv run pytest tests
+        run: uv run --no-sync pytest tests
