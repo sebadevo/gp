@@ -24,6 +24,7 @@ jobs:
         with:
           version: "0.7.5" # version of uv
           enable-cache: true
+          prune-cache: false
 
       - name: "Cache pre-commit"
         uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684 # v4.2.3
@@ -64,12 +65,8 @@ jobs:
         with:
           version: "0.7.5" # version of uv
           enable-cache: true
-
-      - name: Cache uv sync
-        uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684 # v4.2.3
-        with:
-          path: ~/.cache/uv-sync
-          key: uv-sync-${{ hashFiles('uv.lock') }}-${{ hashFiles('pyproject.toml') }}
+          prune-cache: false
+          activate-environment: true
 
       - name: Install the project # is this really needed ?
         run: uv sync --locked --all-extras --all-groups
