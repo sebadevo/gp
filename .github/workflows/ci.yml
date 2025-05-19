@@ -62,8 +62,8 @@ jobs:
           version: "0.7.5" # version of uv
           enable-cache: true
 
-      # - name: Install the project # is this really needed ?
-      #   run: uv sync --locked --all-extras --all-groups
+      - name: Install the project # is this really needed ?
+        run: uv sync --locked --all-extras --all-groups
 
       - name: Run tests
         run: uv run --no-sync pytest tests
