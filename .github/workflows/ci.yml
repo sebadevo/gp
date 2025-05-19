@@ -43,8 +43,8 @@ jobs:
           echo '```' >> "$GITHUB_STEP_SUMMARY"
           exit "$exit_code"
 
-      - name: Minimize uv cache
-        run: uv cache prune --ci
+      # - name: Minimize uv cache
+      #   run: uv cache prune --ci
 
   test:
     name: "Tests"
@@ -74,5 +74,5 @@ jobs:
       - name: Run tests
         run: uv run --no-sync pytest tests
 
-      - name: Minimize uv cache
-        run: uv cache prune --ci
+      # - name: Minimize uv cache
+      #   run: uv cache prune --ci
