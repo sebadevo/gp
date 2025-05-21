@@ -65,11 +65,8 @@ jobs:
         with:
           version: "0.7.5" # version of uv
           enable-cache: true
-          prune-cache: false
+          prune-cache: true
           activate-environment: true
-
-      # - name: Install the project # is this really needed ?
-      #   run: uv sync --locked --all-extras --all-groups
 
       - name: Run tests
         run: uv run --frozen pytest tests
