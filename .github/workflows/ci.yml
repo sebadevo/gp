@@ -20,9 +20,9 @@ jobs:
           persist-credentials: false
 
       - name: Install uv
-        uses: astral-sh/setup-uv@6b9c6063abd6010835644d4c2e1bef4cf5cd0fca # v6.0.1
+        uses: astral-sh/setup-uv@bd01e18f51369d5a26f1651c3cb451d3417e3bba # v6.3.1
         with:
-          version: "0.7.5" # version of uv
+          version: "0.7.15" # version of uv
           enable-cache: true
           prune-cache: false
 
@@ -61,15 +61,15 @@ jobs:
           python-version-file: ".python-version"
 
       - name: Install uv
-        uses: astral-sh/setup-uv@6b9c6063abd6010835644d4c2e1bef4cf5cd0fca # v6.0.1
+        uses: astral-sh/setup-uv@bd01e18f51369d5a26f1651c3cb451d3417e3bba # v6.3.1
         with:
-          version: "0.7.5" # version of uv
+          version: "0.7.15" # version of uv
           enable-cache: true
           prune-cache: true
           activate-environment: true
 
       - name: Run tests
-        run: uv run --frozen pytest tests
+        run: uv run --locked pytest tests
 
       - name: Minimize uv cache
         run: uv cache prune --ci
